@@ -2,6 +2,8 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+import { Button } from "./button"
+
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -73,4 +75,21 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = "CardFooter"
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+const ContactButton = React.forwardRef<
+  HTMLButtonElement,
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+>(({ className, ...props }, ref) => (
+  <Button
+    ref={ref}
+    className={cn(
+      "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105",
+      className
+    )}
+    {...props}
+  >
+    Me contacter
+  </Button>
+))
+ContactButton.displayName = "ContactButton"
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, ContactButton }
